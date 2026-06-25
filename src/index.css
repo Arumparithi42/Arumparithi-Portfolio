@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-padding-top: 80px;
+}
+
+body {
+  @apply bg-ink-950 text-mist-100 font-body antialiased transition-colors duration-300;
+}
+
+body.light-mode {
+  @apply bg-light-bg text-light-text;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F2733;
+  border-radius: 0;
+}
+.light-mode ::-webkit-scrollbar-thumb {
+  background: #DDE3E9;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #3DDC97;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-signal mb-3 flex items-center gap-2;
+  }
+
+  .section-label::before {
+    content: '//';
+    @apply text-mist-400;
+  }
+
+  .heading-lg {
+    @apply font-display font-semibold text-3xl sm:text-4xl md:text-5xl text-mist-100 tracking-tight;
+  }
+
+  .light-mode .heading-lg {
+    @apply text-light-text;
+  }
+
+  .card-surface {
+    @apply bg-ink-800 border border-ink-600 transition-all duration-300;
+  }
+
+  .light-mode .card-surface {
+    @apply bg-light-surface border-light-border;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-signal text-ink-950 font-mono text-sm font-semibold tracking-wide uppercase transition-all duration-300 hover:bg-signal-glow hover:shadow-[0_0_24px_rgba(61,220,151,0.45)];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-ink-600 text-mist-100 font-mono text-sm font-semibold tracking-wide uppercase transition-all duration-300 hover:border-signal hover:text-signal;
+  }
+
+  .light-mode .btn-secondary {
+    @apply border-light-border text-light-text hover:border-signal-dim hover:text-signal-dim;
+  }
+}
